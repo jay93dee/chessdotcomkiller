@@ -1,0 +1,277 @@
+/* Basic Reset & Fonts */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #c0c0c0;
+  color: #222;
+  text-align: center;
+}
+
+h1 {
+  font-family: times;
+  font-size: 40px;
+  font-style: italic;
+  margin: 0 0 20px 21px;
+}
+
+/* Header with mode switch */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mode-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+/* Toggle switch styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: cornflowerblue;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Main layout */
+.main-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 10px;
+}
+
+/* Board section */
+.board-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Coordinates on top (letters) */
+.coordinate-row {
+  display: grid;
+  grid-template-columns: 40px repeat(8, 60px);
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #222;
+}
+
+.coordinate-row > div:first-child {
+  /* empty corner */
+}
+
+/* Container for vertical coords and board side by side */
+.board-row-container {
+  display: flex;
+}
+
+/* Coordinates on left (numbers) */
+.coordinate-col {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  margin-right: 4px;
+  font-weight: bold;
+  color: #222;
+  font-size: 18px;
+  line-height: 60px;
+  user-select: none;
+}
+
+/* Chessboard grid */
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, 60px);
+  grid-template-rows: repeat(8, 60px);
+  border: 4px solid #333;
+  box-sizing: content-box;
+}
+
+/* Squares */
+.board div {
+  width: 60px;
+  height: 60px;
+  user-select: none;
+}
+
+/* Color squares */
+.dark {
+  background-color: cornflowerblue;
+}
+
+.light {
+  background-color: antiquewhite;
+}
+
+/* Controls and history section */
+.controls-history {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 220px;
+  gap: 20px;
+}
+
+.controls input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.controls button {
+  margin-top: 8px;
+  padding: 8px 12px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.history h3 {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+.history-list {
+  background: antiquewhite;
+  border: 2px solid black;
+  min-height: 300px;
+  width: 100%;
+  padding: 10px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #222;
+  color: #eee;
+}
+
+body.dark-mode .coordinate-row,
+body.dark-mode .coordinate-col {
+  color: #eee;
+}
+
+body.dark-mode .board {
+  border-color: #eee;
+}
+
+body.dark-mode .light {
+  background-color: #555;
+}
+
+body.dark-mode .dark {
+  background-color: #112244;
+}
+
+body.dark-mode .controls input[type="text"],
+body.dark-mode .controls button {
+  background-color: #333;
+  color: #eee;
+  border: none;
+}
+
+body.dark-mode .history-list {
+  background-color: #444;
+  border-color: #eee;
+  color: #eee;
+}
+.board div {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  /* vertically and horizontally centers pieces */
+  font-size: 36px; /* or adjust size */
+  cursor: pointer;
+}
+
+.piece {
+  font-size: 40px; /* bigger size for chess piece icons if using font */
+  line-height: 1;
+  user-select: none;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: antiquewhite;
+}
+
+body.dark-mode .coordinate-row,
+body.dark-mode .coordinate-col {
+  color: antiquewhite;
+}
+
+body.dark-mode .board {
+  border-color: antiquewhite;
+}
+
+body.dark-mode .light {
+  background-color: #a3bffa;
+}
+
+body.dark-mode .dark {
+  background-color: #1e1e2f;
+}
+
+body.dark-mode .controls input[type="text"],
+body.dark-mode .controls button {
+  background-color: #333;
+  color: antiquewhite;
+  border: 2px solid antiquewhite;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+body.dark-mode .history-list {
+  background-color: #333;
+  border-color: antiquewhite;
+  color: antiquewhite;
+}
